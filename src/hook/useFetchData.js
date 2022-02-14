@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useFetchData(fetchPromise) {
-  let [data, setData] = useState(null);
+  const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
