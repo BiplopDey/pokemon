@@ -1,3 +1,9 @@
+import PokemonCard from "../components/pokemonCard";
+
 export default function Home() {
-  return <>Hola</>;
+  return (
+    <>
+      <PokemonCard id={1} />
+    </>
+  );
 }
