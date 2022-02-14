@@ -1,9 +1,10 @@
 import axios from "axios";
 import Pokemon from "../domain/Pokemon";
+import { apiUrl } from "./apiUrl";
 
 export class PokemonService {
   constructor(id) {
-    this.url = "https://pokeapi.co/api/v2/pokemon/1/";
+    this.url = apiUrl.pokemon + `/${id}/`;
   }
   async getPokemon() {
     const response = await axios.get(this.url);
