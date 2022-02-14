@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import PokemonCardList from "../components/pokemonCardList";
 import useFetchData from "../hook/useFetchData";
 import useFetchPage from "../hook/useFetchPage";
+import { PokemonApiRepository } from "../infrastructure/pokemonApiRepository";
 import { PokemonListService } from "../services/pokemonCardListService";
 
 export default function Home() {
-  const service = new PokemonListService();
+  const service = new PokemonListService(new PokemonApiRepository());
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
