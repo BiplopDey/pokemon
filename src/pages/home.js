@@ -21,10 +21,18 @@ export default function Home() {
   }, [page]);
 
   if (loading) return <>Loading ...</>;
-  //if (error) return <>Error: {error.message}</>;
+  if (error) return <>Error: {error.message}</>;
 
   return (
     <>
+      <button
+        disabled={page <= 0}
+        onClick={() => {
+          setPage(page - 1);
+        }}
+      >
+        Prev
+      </button>
       <button
         onClick={() => {
           setPage(page + 1);

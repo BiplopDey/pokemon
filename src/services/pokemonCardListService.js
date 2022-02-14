@@ -12,6 +12,7 @@ export function PokemonListService() {
     const data = response.data.results;
     return data.map((dt) => getIdByUrl(dt.url));
   };
+
   function getIdByUrl(url) {
     let re = /(?<=\/)\d+(?=\/$)/g;
     return re.exec(url)[0];
