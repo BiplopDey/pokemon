@@ -13,7 +13,8 @@ export function PokemonListService() {
     return data.map((dt) => getIdByUrl(dt.url));
   };
   function getIdByUrl(url) {
-    return url.slice(-2, -1);
+    let re = /(?<=\/)\d+(?=\/$)/g;
+    return re.exec(url)[0];
   }
 }
 // export class PokemonListService {

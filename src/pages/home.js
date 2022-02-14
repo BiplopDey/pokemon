@@ -16,7 +16,7 @@ export default function Home() {
     service
       .getPokemonsIdByPage(page)
       .then((data) => setPokemonIdList([...data]))
-      //.catch((err) => setError(err))
+      .catch((err) => setError(err))
       .finally(() => setLoading(false));
   }, [page]);
 
