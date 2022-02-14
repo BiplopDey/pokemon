@@ -5,7 +5,9 @@ import { PokemonService } from "../services/pokemonCardService";
 
 export default function PokemonCard({ id }) {
   const service = new PokemonService(new PokemonApiRepository());
-  const [loading, pokemon, error] = useFetchData(service.getPokemonById(id));
+  const [loading, pokemon, error, setRefresh] = useFetchData(
+    service.getPokemonById(id)
+  );
 
   if (loading) return <>Loading...</>;
   if (error) return <h1>An error ocurred:{error.message}</h1>;

@@ -8,17 +8,12 @@ import { PokemonListService } from "../services/pokemonCardListService";
 export default function Home() {
   const service = new PokemonListService(new PokemonApiRepository());
   const [page, setPage] = useState(0);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
-  const [pokemonIdList, setPokemonIdList] = useState([]);
+  const [loading, pokemonIdList, error, setPromise] = useFetchData(
+    service.getPokemonsIdByPage(page)
+  );
 
   useEffect(() => {
-    setLoading(true);
-    service
-      .getPokemonsIdByPage(page)
-      .then((data) => setPokemonIdList([...data]))
-      .catch((err) => setError(err))
-      .finally(() => setLoading(false));
+    setPromise(service.getPokemonsIdByPage(page));
   }, [page]);
 
   if (loading) return <>Loading ...</>;
