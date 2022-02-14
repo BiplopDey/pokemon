@@ -1,7 +1,18 @@
 import axios from "axios";
-import { apiUrl } from "../services/apiUrl";
+import Pokemon from "../domain/Pokemon";
+import { apiUrl } from "./apiUrl";
 
 export function PokemonApiRepository() {
+  this.getPokemonById = async function (id) {
+    const response = await axios.get(apiUrl.pokemon + `/${id}/`);
+    const data = response.data;
+
+    const name = data.forms[0].name;
+    const image = data.sprites.other.home.front_default;
+
+    return new Pokemon(name, image);
+  };
+
   this.getPokemonsIdByPage = async function (page) {
     const limit = 5;
     const offset = page * limit;

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import useFetchData from "../hook/useFetchData";
+import { PokemonApiRepository } from "../infrastructure/pokemonApiRepository";
 import { PokemonService } from "../services/pokemonCardService";
 
 export default function PokemonCard({ id }) {
-  const service = new PokemonService(id);
-  const [loading, pokemon, error] = useFetchData(service.getPokemon());
+  const service = new PokemonService(new PokemonApiRepository());
+  const [loading, pokemon, error] = useFetchData(service.getPokemonById(id));
 
   if (loading) return <>Loading...</>;
   if (error) return <h1>An error ocurred:{error.message}</h1>;

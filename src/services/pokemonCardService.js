@@ -1,18 +1,7 @@
-import axios from "axios";
-import Pokemon from "../domain/Pokemon";
-import { apiUrl } from "./apiUrl";
-
-export function PokemonService(id) {
-  this.url = apiUrl.pokemon + `/${id}/`;
-
-  this.getPokemon = async function () {
-    const response = await axios.get(this.url); //remove this. keyword
-    const data = response.data;
-
-    const name = data.forms[0].name;
-    const image = data.sprites.other.home.front_default;
-
-    return new Pokemon(name, image);
+export function PokemonService(repository) {
+  this.repository = repository;
+  this.getPokemonById = async function (id) {
+    return repository.getPokemonById(id);
   };
 }
 // export class PokemonService {

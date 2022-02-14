@@ -1,7 +1,3 @@
-import axios from "axios";
-import { PokemonApiRepository } from "../infrastructure/pokemonApiRepository";
-import { apiUrl } from "./apiUrl";
-
 export function PokemonListService(repository) {
   this.repository = repository;
   this.getPokemonsIdByPage = async function (page) {
