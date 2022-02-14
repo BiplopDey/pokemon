@@ -4,7 +4,9 @@ export default function useFetchData(fetchPromise) {
   const [promise, setPromise] = useState(fetchPromise);
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+  const [error, setError] = useState(() =>
+    fetchPromise ? null : "no promise given"
+  );
 
   if (promise) {
     fetchData();

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import PokemonCardList from "../components/pokemonCardList";
 import useFetchData from "../hook/useFetchData";
-import useFetchPage from "../hook/useFetchPage";
 import { PokemonApiRepository } from "../infrastructure/pokemonApiRepository";
 import { PokemonListService } from "../services/pokemonCardListService";
 
