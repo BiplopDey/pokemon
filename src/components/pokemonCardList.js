@@ -6,11 +6,7 @@ export default function PokemonCardList({ pokemonIdList }) {
       <h1>Pokemons</h1>
       <ul>
         {pokemonIdList.map((id) => {
-          return (
-            <li key={id}>
-              <PokemonCard id={id} />
-            </li>
-          );
+          return <PokemonCard id={id} key={id} />;
         })}
       </ul>
     </>
